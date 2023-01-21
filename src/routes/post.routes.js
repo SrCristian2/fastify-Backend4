@@ -12,13 +12,13 @@ export const postRoutes = (fastify, opts, done) => {
   fastify.get("/:id", { preHandler: [middleware] }, postCtrl.listOne);
   fastify.post(
     "/",
-    { preHandler: [middleware, upload.single("img")] },
+    { preValidation: [middleware, upload.single("img")] },
     postCtrl.add
   );
   fastify.delete("/:id", { preHandler: [middleware] }, postCtrl.delete);
   fastify.put(
     "/:id",
-    { preHandler: [middleware, upload.single("img")] },
+    { preValidation: [middleware, upload.single("img")] },
 
     postCtrl.update
   );
